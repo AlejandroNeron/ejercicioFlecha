@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Calculadora simple</title>
+</head>
+<body>
+
+<h2>Calculadora simple</h2>
+
+
+<input id="num1" type="number" placeholder="Número 1">
+<input id="num2" type="number" placeholder="Número 2"><br><br>
+
+<!-- Botones para las operaciones -->
+<button id="sum">+</button>
+<button id="sub">-</button>
+<button id="mul">*</button>
+<button id="div">/</button>
+
+<!-- Lugar donde se muestra el resultado -->
+<p id="resultado"></p>
+
+<script>
+// 1️⃣ Funciones flecha para cada operación
+const suma = (a, b) => a + b;
+const resta = (a, b) => a - b;
+const multiplica = (a, b) => a * b;
+const divide = (a, b) => b === 0 ? 'No se puede dividir entre 0' : a / b;
+
+// 2️⃣ Función para leer los números y mostrar el resultado
+const calcular = (operacion) => {
+  const a = parseFloat(document.getElementById('num1').value);
+  const b = parseFloat(document.getElementById('num2').value);
+
+  if (isNaN(a) || isNaN(b)) {
+    document.getElementById('resultado').textContent = 'Introduce números válidos';
+  } else {
+    document.getElementById('resultado').textContent = 'Resultado: ' + operacion(a, b);
+  }
+}
+
+// 3️⃣ Conectar los botones con las operaciones
+document.getElementById('sum').onclick = () => calcular(suma);
+document.getElementById('sub').onclick = () => calcular(resta);
+document.getElementById('mul').onclick = () => calcular(multiplica);
+document.getElementById('div').onclick = () => calcular(divide);
+</script>
+
+</body>
+</html>
